@@ -12,4 +12,7 @@ export default NextAuth({
     }),
   ],
   adapter: PrismaAdapter(prisma),
+  session: {
+    strategy: "jwt",
+  },
 })
