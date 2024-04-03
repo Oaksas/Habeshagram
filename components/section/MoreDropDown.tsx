@@ -19,11 +19,12 @@ import {
   Settings,
   Sun,
 } from "lucide-react";
+// import { signOut } from "next-auth/react";
+
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import { Switch } from "../ui/switch";
-import { signOut } from "next-auth/client";
 import { Label } from "../ui/label";
 
 function MoreDropDown() {
@@ -91,11 +92,11 @@ function MoreDropDown() {
               <Moon size={20} />
               <p>Switch appearance</p>
             </DropdownMenuItem>
-
+            {/* 
             <DropdownMenuItem className="menuItem" onClick={() => signOut()}>
               <LogOut size={20} />
               <p>Log out</p>
-            </DropdownMenuItem>
+            </DropdownMenuItem> */}
           </>
         )}
 
