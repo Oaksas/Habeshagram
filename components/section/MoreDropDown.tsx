@@ -5,8 +5,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -26,6 +24,7 @@ import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import { Switch } from "../ui/switch";
 import { Label } from "../ui/label";
+import { signOut } from "next-auth/react";
 
 function MoreDropDown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -92,11 +91,11 @@ function MoreDropDown() {
               <Moon size={20} />
               <p>Switch appearance</p>
             </DropdownMenuItem>
-            {/* 
+
             <DropdownMenuItem className="menuItem" onClick={() => signOut()}>
               <LogOut size={20} />
               <p>Log out</p>
-            </DropdownMenuItem> */}
+            </DropdownMenuItem>
           </>
         )}
 
