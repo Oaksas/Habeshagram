@@ -65,7 +65,7 @@ function MoreDropDown() {
         ref={ref}
         className={cn(
           "dark:bg-neutral-800 w-64 !rounded-xl !p-0 transition-opacity",
-          !open && "opacity-0"
+          !isOpen && "opacity-0"
         )}
         align="end"
         alignOffset={-40}

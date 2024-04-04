@@ -1,5 +1,4 @@
 import NextAuth, { NextAuthOptions, getServerSession } from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/lib/prisma";
 import {
@@ -7,15 +6,19 @@ import {
   NextApiRequest,
   NextApiResponse,
 } from "next";
+import GoogleProvider from "next-auth/providers/google";
 
-const config = {
+export const config: NextAuthOptions = {
+  pages: {
+    signIn: "/login",
+  },
+  adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID || "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
-  adapter: PrismaAdapter(prisma),
   session: {
     strategy: "jwt",
   },
@@ -62,9 +65,10 @@ const config = {
       };
     },
   },
-} as NextAuthOptions;
+};
 
 export default NextAuth(config);
+
 export function auth(
   ...args:
     | [GetServerSidePropsContext["req"], GetServerSidePropsContext["res"]]

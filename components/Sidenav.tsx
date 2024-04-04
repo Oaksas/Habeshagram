@@ -1,9 +1,12 @@
+import { auth } from "@/auth";
 import Logo from "./section/Logo";
 import MoreDropDown from "./section/MoreDropDown";
 import Navlinks from "./section/Navlinks";
 import Profile from "./section/Profile";
 
-function Sidenav() {
+async function Sidenav() {
+  const session = await auth();
+  const user = session?.user;
   return (
     <div className="flex h-full flex-col px-3 py-4 md:px-2">
       <div
@@ -14,7 +17,7 @@ function Sidenav() {
         <Logo />
         <Navlinks />
         {/*If user is logged in*/}
-        <Profile />
+        {user && <Profile user={user} />}
         <div className="hidden md:flex relative md:mt-auto flex-1 items-end w-full">
           <MoreDropDown />
         </div>
